@@ -43,12 +43,14 @@ file_om=[f for f in glob("*.cube")]
 #	You should format your set of values as presented on "the_view" 
 #	variable.
 
-the_view =    ( 0.414068997,    0.909954250,    0.023042712,
-				0.329461694,   -0.173420861,    0.928105175,
-				0.848530829,   -0.376706958,   -0.371601909,
-				0.000000000,    0.000000000,  -43.606266022,
-				1.609671593,   -0.394682407,   -0.436405420,
-				39.733062744,   47.479469299,  -20.000000000)
+the_view = ( 
+				0.994782925,   -0.010882307,    0.101430826,
+				0.077204466,    0.730216444,   -0.678839207,
+				-0.066679209,    0.683128655,    0.727247536,
+				0.000000000,    0.000000000,  -19.934177399,
+				-0.000000238,    0.000000238,   -0.000000333,
+			-5344.827636719, 5384.695800781,  -20.000000000 
+			)
 
 # workspace settings
 
@@ -89,7 +91,7 @@ cmd.set("dash_radius",0.035)
 cmd.distance('coordinate','elem Eu', 'elem N', 2.7,label=0)
 cmd.distance('coordinate','elem Eu', 'elem O', 2.7,label=0)
 
-def create_png(coords,cube=None,labelname=None,colorA='red',colorB='blue'):
+def create_png(coords,cube=None,labelname=None,colorA='orange',colorB='tea'):
 	"""
 	This is a simple function to create nice png images from a xyz file
 	and a set of cube files. If only the xyz file is passed, this 
@@ -119,24 +121,24 @@ def create_png(coords,cube=None,labelname=None,colorA='red',colorB='blue'):
 		#	Label position is a headache, you should consider set the best 
 		#	position for your visualization. GOOD LUCK!
 		
-		cmd.pseudoatom(object='foo',vdw=-1.0, hetatm=1,pos=[0,0,1.75])
-		cmd.show('spheres','foo')
-		cmd.label('foo',labelname)
+		cmd.pseudoatom(object='foo',label=labelname,pos=[-3,3,1.75])
+#		cmd.show('spheres','foo')
+#		cmd.label('foo',labelname)
 		cmd.set("label_size",-2)
 		cmd.set("label_outline_color","black")
-		cmd.set("label_color","white")
+		cmd.set("label_color","black")
 		cmd.set("label_font_id",7)
-		cmd.set("label_position",[-6,7,1.75])
-		cmd.png(labelname,width=1320,height=1160,ray=1)
+#		cmd.set("label_position",[-6,7,1.75])
+		cmd.png(labelname,width=700,height=700,dpi=200,ray=1)
 		cmd.delete('Orb') 
 		if cube:
 			cmd.delete('Orb')
 			cmd.delete('Asurf1')
 			cmd.delete('Bsurf1')
 			cmd.delete('foo')
-			cmd.png('coords',width=1320,height=1160,ray=1)	
+			cmd.png('coords',width=700,height=700,dpi=200,ray=1)	
 	else:
-		cmd.png('coords',width=1320,height=1160,ray=1)
+		cmd.png('coords',width=700,height=700,dpi=2000,ray=1)
 	return 
 
 if not file_om:
@@ -145,7 +147,7 @@ if not file_om:
 	create_png(coords,the_view)
 	
 else:
-	print("Let's get some plots!\n But I'll give you a nice\n geom picture.\n Consider this as a BONUS.")	
+	print("Let's get some plots!\n But I'll give you a nice\n geom picture.")	
 	for cube in file_om:
 		temp = re.search('(?<=mo)[0-9]+',cube)
 		labelname = temp.group(0)
