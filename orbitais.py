@@ -129,16 +129,16 @@ def create_png(coords,cube=None,labelname=None,colorA='orange',colorB='tea'):
 		cmd.set("label_color","black")
 		cmd.set("label_font_id",7)
 #		cmd.set("label_position",[-6,7,1.75])
-		cmd.png(labelname,width=700,height=700,dpi=200,ray=1)
+		cmd.png(labelname,width=1980,height=1740,dpi=200,ray=1)
 		cmd.delete('Orb') 
 		if cube:
 			cmd.delete('Orb')
 			cmd.delete('Asurf1')
 			cmd.delete('Bsurf1')
 			cmd.delete('foo')
-			cmd.png('coords',width=700,height=700,dpi=200,ray=1)	
+			cmd.png('coords',width=1980,height=1740,dpi=200,ray=1)	
 	else:
-		cmd.png('coords',width=700,height=700,dpi=2000,ray=1)
+		cmd.png('coords',width=1980,height=1740,dpi=200,ray=1)
 	return 
 
 if not file_om:
