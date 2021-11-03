@@ -43,14 +43,10 @@ file_om=[f for f in glob("*.cube")]
 #	You should format your set of values as presented on "the_view" 
 #	variable.
 
-the_view = ( 
-				0.994782925,   -0.010882307,    0.101430826,
-				0.077204466,    0.730216444,   -0.678839207,
-				-0.066679209,    0.683128655,    0.727247536,
-				0.000000000,    0.000000000,  -19.934177399,
-				-0.000000238,    0.000000238,   -0.000000333,
-			-5344.827636719, 5384.695800781,  -20.000000000 
-			)
+view_file = "the_view.txt"
+the_view = ()
+with open(view_file) as f:
+	the_view = f.read()
 
 # workspace settings
 
