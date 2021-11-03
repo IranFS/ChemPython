@@ -43,8 +43,8 @@ file_om=[f for f in glob("*.cube")]
 #	You should format your set of values as presented on "the_view" 
 #	variable.
 
-view_file = "the_view.txt"
-the_view = ()
+view_file = "text_view.txt"
+#
 with open(view_file) as f:
 	the_view = f.read()
 
@@ -101,6 +101,7 @@ def create_png(coords,cube=None,labelname=None,colorA='orange',colorB='tea'):
 	"""
 
 	cmd.load(coords,object='coords',format='xyz',quiet=1)
+
 	cmd.set_view(the_view)
 	
 	#	It is possible to set isovalues, colors and other stuffs
@@ -139,8 +140,8 @@ def create_png(coords,cube=None,labelname=None,colorA='orange',colorB='tea'):
 
 if not file_om:
 	print("Nothing to do about surfaces here!\nI can generate a nice geom for you instead.")
-	setview = the_view
-	create_png(coords,the_view)
+#	setview = the_view
+	create_png(coords)
 	
 else:
 	print("Let's get some plots!\n But I'll give you a nice\n geom picture.")	
